@@ -4,6 +4,8 @@ import com.example.jbpm.model.Order;
 import org.drools.runtime.process.WorkItem;
 import org.drools.runtime.process.WorkItemHandler;
 import org.drools.runtime.process.WorkItemManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,6 +15,7 @@ import java.util.Map;
  * That is, the WorkItem may be completed immediately.
  */
 public class WidgetWorkItemHandler implements WorkItemHandler {
+    private static final Logger logger = LoggerFactory.getLogger(WidgetWorkItemHandler.class);
 
     /**
      * Immediately, ie synchronously, completes the given WorkItem.
@@ -22,6 +25,9 @@ public class WidgetWorkItemHandler implements WorkItemHandler {
      */
     @Override
     public void executeWorkItem(WorkItem workItem, WorkItemManager workItemManager) {
+        final long workItemId = workItem.getId();
+        logger.info("WidgetWorkItemHandler Received request for workitem '{}'", workItemId);
+
         // Extract the Order from the workitem parameters and update the order as complete
         Order order = Order.class.cast(workItem.getParameter("Order"));
         order.complete();
@@ -30,7 +36,7 @@ public class WidgetWorkItemHandler implements WorkItemHandler {
         Map<String, Object> params = new HashMap<String,Object>();
         params.put("Order", order);
 
-        workItemManager.completeWorkItem(workItem.getId(), params);
+        workItemManager.completeWorkItem(workItemId, params);
     }
 
     @Override

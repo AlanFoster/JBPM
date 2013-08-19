@@ -18,11 +18,14 @@
     <properties>
         <jbpm.version>5.4.0.Final</jbpm.version>
         <drools.version>5.5.0.Final</drools.version>
+        <slf4j.version>1.6.0</slf4j.version>
+        <junit.version>4.11</junit.version>
+        <mysql-connector.version>5.1.19</mysql-connector.version>
     </properties>
 	
     <dependencies>
         <!--
-            Datamodel dependencies
+            Datamodel Dependencies
         -->
         <dependency>
             <groupId>me.alanfoster.jbpm</groupId>
@@ -31,7 +34,7 @@
         </dependency>
 
         <!--
-            JBPM dependences
+            JBPM Dependencies
         -->
         <dependency>
             <groupId>junit</groupId>
@@ -52,6 +55,35 @@
             <groupId>org.jbpm</groupId>
             <artifactId>jbpm-flow-builder</artifactId>
             <version>${jbpm.version}</version>
+        </dependency>
+
+        <!-- logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <!-- MySQL Dependencies -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector.version}</version>
+        </dependency>
+
+        <!--
+            Testing Dependencies
+        -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>
