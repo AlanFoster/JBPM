@@ -10,12 +10,9 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	
-    <groupId>com.example.jbpm</groupId>
+    <groupId>me.alanfoster.jbpm</groupId>
     <artifactId>model</artifactId>
     <version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	
-    <dependencies>
-		
-    </dependencies>
+
 </project>
