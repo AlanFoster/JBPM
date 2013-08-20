@@ -1,4 +1,4 @@
-package com.example.jbpm.model;
+package me.alanfoster.jbpm.model;
 
 import java.io.Serializable;
 
@@ -20,5 +20,12 @@ public abstract class Product implements Serializable {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productName='" + productName + '\'' +
+                '}';
     }
 }

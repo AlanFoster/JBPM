@@ -29,7 +29,9 @@ at the time of writing.
 - [JBPM Installer](http://sourceforge.net/projects/jbpm/files/jBPM%205/jbpm-5.4.0.Final/) - 5.4.0.Final
 - [MySQL](http://dev.mysql.com/downloads/mysql/5.1.html) mysql-5.1.71
 - [Eclipse](http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/juno/SR2/eclipse-jee-juno-SR2-win32.zip) JEE Juno SR2
-    - BPMN 2.0 Modeler Plugin
+    - [BPMN 2.0 Modeler Plugin](http://www.eclipse.org/bpmn2-modeler/) 0.2.5
+    - Redhat JBoss Developer Studio Juno Marketplaces 6.0 Marketplace
+- [IntelliJ](http://www.jetbrains.com/idea/) 12.1.4
 
 
 ### MySQL

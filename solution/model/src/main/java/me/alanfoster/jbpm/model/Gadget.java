@@ -1,4 +1,4 @@
-package com.example.jbpm.model;
+package me.alanfoster.jbpm.model;
 
 import java.io.Serializable;
 
@@ -9,7 +9,7 @@ import java.io.Serializable;
  * All Product subclasses have been adorned with this implements interface for demonstration purposes.
  */
 public class Gadget extends Product implements Serializable {
-    protected Gadget() {
+    public Gadget() {
         super("Gadget");
     }
 }

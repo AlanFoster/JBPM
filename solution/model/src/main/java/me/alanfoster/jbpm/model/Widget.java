@@ -1,4 +1,4 @@
-package com.example.jbpm.model;
+package me.alanfoster.jbpm.model;
 
 import java.io.Serializable;
 

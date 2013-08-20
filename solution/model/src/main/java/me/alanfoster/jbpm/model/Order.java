@@ -1,4 +1,4 @@
-package com.example.jbpm.model;
+package me.alanfoster.jbpm.model;
 
 import java.io.Serializable;
 
@@ -11,6 +11,13 @@ import java.io.Serializable;
 public class Order implements Serializable {
     private boolean completed;
     private Product product;
+
+    public Order() {
+    }
+
+    public Order(Product product) {
+        this.product = product;
+    }
 
     public boolean isCompleted() {
         return completed;
@@ -26,5 +33,13 @@ public class Order implements Serializable {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "completed=" + completed +
+                ", product=" + product +
+                '}';
     }
 }

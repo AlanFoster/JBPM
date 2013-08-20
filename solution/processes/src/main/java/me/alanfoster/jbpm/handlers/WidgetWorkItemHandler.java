@@ -1,6 +1,6 @@
 package me.alanfoster.jbpm.handlers;
 
-import com.example.jbpm.model.Order;
+import me.alanfoster.jbpm.model.Order;
 import org.drools.runtime.process.WorkItem;
 import org.drools.runtime.process.WorkItemHandler;
 import org.drools.runtime.process.WorkItemManager;
