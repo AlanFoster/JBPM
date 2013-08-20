@@ -13,12 +13,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Basic process manager tests.
- *
- * Note, these tests assume that an application has already been deployed to Guvnor,
- * and that a MySQL database exists.
+ * Basic process manager tests that do not depend on a running instance of Guvnor/MySQL.
  */
-public class ProcessManagerTests {
+public class BasicProcessManagerTests {
 
     @Test
     public void testWidget() throws Exception {
