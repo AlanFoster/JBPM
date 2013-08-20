@@ -10,7 +10,9 @@ Solution Overview
 
 The business process requires for Orders to be sent in a different path dependant on the type of Product the order contains. The two types of Product which may be contained within an order are Widgets, and Gadgets.
 
-![Process Overflow](documentation/WidgetsAndGadgets.png)
+<div style="align:center">
+	<img src="documentation/WidgetsAndGadgets.png" alt="Business Process Overview" />
+</div>
 
 Work Item Handlers
 ------------------
