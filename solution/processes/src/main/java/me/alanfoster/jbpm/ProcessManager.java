@@ -53,7 +53,7 @@ public class ProcessManager {
         // A knowledge runtime logger will allow us to log using our log4j settings
         KnowledgeRuntimeLoggerFactory.newConsoleLogger(statefulKnowledgeSession);
 
-        logger.info("Created a new workflow process instance with the id '[}'", workflowProcessInstance.getId());
+        logger.info("Created a new workflow process instance with the id '{}'", workflowProcessInstance.getId());
 
         return workflowProcessInstance;
     }

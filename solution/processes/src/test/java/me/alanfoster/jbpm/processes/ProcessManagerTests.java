@@ -21,7 +21,7 @@ import org.junit.Test;
 public class ProcessManagerTests {
 
     @Test
-    public void testWidget() {
+    public void testWidget() throws Exception {
         KnowledgeBase knowledgeBase = createKnowledgeBase();
         ProcessManager processManager = new ProcessManager(knowledgeBase);
 
@@ -35,12 +35,15 @@ public class ProcessManagerTests {
 
 
     @Test
-    public void testGadget() {
+    public void testGadget() throws Exception {
         KnowledgeBase knowledgeBase = createKnowledgeBase();
         ProcessManager processManager = new ProcessManager(knowledgeBase);
 
         Order gadgetOrder = getGadgetOrder();
         processManager.startWidgetAndGadgetsProcess(gadgetOrder);
+
+        // The Gadget service will be performed asynchronously, and we should wait for it to complete
+        Thread.sleep(3000);
 
         Assert.assertTrue(
                 "The gadget order should be completed",
