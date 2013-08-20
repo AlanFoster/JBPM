@@ -4,6 +4,7 @@ import me.alanfoster.jbpm.model.Order;
 import me.alanfoster.jbpm.handlers.GadgetWorkItemHandler;
 import me.alanfoster.jbpm.handlers.WidgetWorkItemHandler;
 import org.drools.KnowledgeBase;
+import org.drools.logger.KnowledgeRuntimeLoggerFactory;
 import org.drools.runtime.StatefulKnowledgeSession;
 import org.drools.runtime.process.WorkflowProcessInstance;
 import org.slf4j.Logger;
@@ -35,7 +36,7 @@ public class ProcessManager {
      */
     public void registerWorkItemHandlers(StatefulKnowledgeSession session) {
         session.getWorkItemManager().registerWorkItemHandler("WidgetService", new WidgetWorkItemHandler());
-        //session.getWorkItemManager().registerWorkItemHandler("GadgetService", new GadgetWorkItemHandler());
+        session.getWorkItemManager().registerWorkItemHandler("GadgetService", new GadgetWorkItemHandler());
     }
 
     /**
@@ -48,6 +49,9 @@ public class ProcessManager {
         StatefulKnowledgeSession statefulKnowledgeSession = knowledgeBase.newStatefulKnowledgeSession();
         registerWorkItemHandlers(statefulKnowledgeSession);
         WorkflowProcessInstance workflowProcessInstance = (WorkflowProcessInstance) statefulKnowledgeSession.startProcess(processId, processParameters);
+
+        // A knowledge runtime logger will allow us to log using our log4j settings
+        KnowledgeRuntimeLoggerFactory.newConsoleLogger(statefulKnowledgeSession);
 
         logger.info("Created a new workflow process instance with the id '[}'", workflowProcessInstance.getId());
 

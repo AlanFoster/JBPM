@@ -34,6 +34,20 @@ public class ProcessManagerTests {
     }
 
 
+    @Test
+    public void testGadget() {
+        KnowledgeBase knowledgeBase = createKnowledgeBase();
+        ProcessManager processManager = new ProcessManager(knowledgeBase);
+
+        Order gadgetOrder = getGadgetOrder();
+        processManager.startWidgetAndGadgetsProcess(gadgetOrder);
+
+        Assert.assertTrue(
+                "The gadget order should be completed",
+                gadgetOrder.isCompleted());
+    }
+
+
 
     private Order getWidgetOrder() {
         return new Order(new Widget());
