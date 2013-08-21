@@ -1,0 +1,48 @@
+<persistence
+        version="2.0"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd
+                      http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+        xmlns:orm="http://java.sun.com/xml/ns/persistence/orm"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://java.sun.com/xml/ns/persistence">
+
+    <!-- Default Bitronix registers itself under JNDI java:comp/UserTransaction -->
+
+    <persistence-unit name="me.alanfoster.jbpm.persistenceunit" transaction-type="JTA">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <!--<jta-data-source>java:foobar</jta-data-source>-->
+
+        <mapping-file>META-INF/JBPMorm-JPA2.xml</mapping-file>
+
+        <class>org.jbpm.persistence.processinstance.ProcessInstanceInfo</class>
+        <class>org.drools.persistence.info.SessionInfo</class>
+        <class>org.drools.persistence.info.WorkItemInfo</class>
+
+        <class>org.jbpm.process.audit.ProcessInstanceLog</class>
+        <class>org.jbpm.process.audit.NodeInstanceLog</class>
+        <class>org.jbpm.process.audit.VariableInstanceLog</class>
+
+        <properties>
+            <!-- TODO Look at JNDI and `jta-data-source` -->
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/jbpm5"/>
+            <property name="hibernate.connection.username" value="jbpm5" />
+            <property name="hibernate.connection.password" value="jbpm5" />
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+            <!-- TODO causes issues when false -->
+            <property name="hibernate.connection.autocommit" value="true"/>
+            <property name="hibernate.max_fetch_depth" value="3"/>
+
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+
+            <property name="hibernate.transaction.jta.platform"
+                      value="org.hibernate.service.jta.platform.internal.BitronixJtaPlatform" />
+
+<!--            <property name="hibernate.transaction.manager_lookup_class"
+                      value="org.hibernate.transaction.BTMTransactionManagerLookup"/>-->
+
+        </properties>
+    </persistence-unit>
+</persistence>

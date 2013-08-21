@@ -1,22 +1,24 @@
 package me.alanfoster.jbpm.processes;
 
+import me.alanfoster.jbpm.ProcessManager;
 import me.alanfoster.jbpm.model.Gadget;
 import me.alanfoster.jbpm.model.Order;
 import me.alanfoster.jbpm.model.Widget;
-import me.alanfoster.jbpm.ProcessManager;
 import org.drools.KnowledgeBase;
-import org.drools.builder.KnowledgeBuilder;
-import org.drools.builder.KnowledgeBuilderFactory;
-import org.drools.builder.ResourceType;
-import org.drools.io.ResourceFactory;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * Basic process manager tests that do not depend on a running instance of Guvnor/MySQL.
+ * Created with IntelliJ IDEA.
+ * User: alan
+ * Date: 20/08/13
+ * Time: 23:24
+ * To change this template use File | Settings | File Templates.
  */
-public class BasicProcessManagerTests {
+public abstract class BaseProcessManagerTests {
 
+    @Ignore
     @Test
     public void testWidget() throws Exception {
         KnowledgeBase knowledgeBase = createKnowledgeBase();
@@ -31,6 +33,7 @@ public class BasicProcessManagerTests {
     }
 
 
+    @Ignore
     @Test
     public void testGadget() throws Exception {
         KnowledgeBase knowledgeBase = createKnowledgeBase();
@@ -47,8 +50,6 @@ public class BasicProcessManagerTests {
                 gadgetOrder.isCompleted());
     }
 
-
-
     private Order getWidgetOrder() {
         return new Order(new Widget());
     }
@@ -58,14 +59,8 @@ public class BasicProcessManagerTests {
     }
 
     /**
-     * Create a new knowledge base from the BPMN files within the current classpath.
-     * This does not connect to a running Guvnor instance.
+     *
+     * @return Either a transacted or non-transacted knowledge base implementation.
      */
-    public KnowledgeBase createKnowledgeBase() {
-        KnowledgeBuilder knowledgeBuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
-        knowledgeBuilder.add(ResourceFactory.newClassPathResource("WidgetsAndGadgets.bpmn"), ResourceType.BPMN2);
-
-        KnowledgeBase knowledgeBase = knowledgeBuilder.newKnowledgeBase();
-        return knowledgeBase;
-    }
+    public abstract KnowledgeBase createKnowledgeBase();
 }

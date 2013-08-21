@@ -4,9 +4,13 @@ import me.alanfoster.jbpm.model.Order;
 import me.alanfoster.jbpm.handlers.GadgetWorkItemHandler;
 import me.alanfoster.jbpm.handlers.WidgetWorkItemHandler;
 import org.drools.KnowledgeBase;
+import org.drools.KnowledgeBaseFactory;
 import org.drools.logger.KnowledgeRuntimeLoggerFactory;
+import org.drools.persistence.jpa.JPAKnowledgeService;
+import org.drools.runtime.Environment;
 import org.drools.runtime.StatefulKnowledgeSession;
 import org.drools.runtime.process.WorkflowProcessInstance;
+import org.jbpm.process.audit.JPAWorkingMemoryDbLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,6 +24,7 @@ import java.util.Map;
 public class ProcessManager {
     private static final Logger logger = LoggerFactory.getLogger(GadgetWorkItemHandler.class);
     private KnowledgeBase knowledgeBase;
+    private Environment environment;
 
     /**
      * Creates a new instance of the process manager
@@ -27,8 +32,15 @@ public class ProcessManager {
      * @param knowledgeBase Injected knowledge base instance.
      *                      Always favour Dependency injection over static access for testability.
      */
+    @Deprecated
     public ProcessManager(KnowledgeBase knowledgeBase) {
         this.knowledgeBase = knowledgeBase;
+    }
+
+    @Deprecated
+    public ProcessManager(KnowledgeBase knowledgeBase, Environment environment) {
+        this.knowledgeBase = knowledgeBase;
+        this.environment = environment;
     }
 
     /**
@@ -46,7 +58,13 @@ public class ProcessManager {
      */
     private WorkflowProcessInstance startProcess(String processId, Map<String, Object> processParameters) {
         // It is considered best practice to create a new StatefulKnowledgeSession per process, for transaction purposes
-        StatefulKnowledgeSession statefulKnowledgeSession = knowledgeBase.newStatefulKnowledgeSession();
+
+        //StatefulKnowledgeSession statefulKnowledgeSession = knowledgeBase.newStatefulKnowledgeSession();
+
+        StatefulKnowledgeSession statefulKnowledgeSession = JPAKnowledgeService.newStatefulKnowledgeSession(knowledgeBase, null, environment);
+        JPAWorkingMemoryDbLogger jpaWorkingMemoryDbLogger = new JPAWorkingMemoryDbLogger(statefulKnowledgeSession);
+
+        logger.info("Created a new stateful knowledge sesion with the id '{}'", statefulKnowledgeSession.getId());
         registerWorkItemHandlers(statefulKnowledgeSession);
         WorkflowProcessInstance workflowProcessInstance = (WorkflowProcessInstance) statefulKnowledgeSession.startProcess(processId, processParameters);
 

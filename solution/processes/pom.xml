@@ -22,7 +22,15 @@
         <junit.version>4.11</junit.version>
         <mysql-connector.version>5.1.19</mysql-connector.version>
     </properties>
-	
+
+    <repositories>
+        <repository>
+            <id>jboss</id>
+            <name>JBoss repository</name>
+            <url>http://repository.jboss.org/maven2</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <!--
             Datamodel Dependencies
@@ -34,13 +42,8 @@
         </dependency>
 
         <!--
-            JBPM Dependencies
+             Core JBPM Dependencies
         -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.8.1</version>
-        </dependency>
         <dependency>
             <groupId>org.jbpm</groupId>
             <artifactId>jbpm-flow</artifactId>
@@ -57,7 +60,9 @@
             <version>${jbpm.version}</version>
         </dependency>
 
-        <!-- logging -->
+        <!--
+            logging
+        -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -69,7 +74,49 @@
             <version>${slf4j.version}</version>
         </dependency>
 
-        <!-- MySQL Dependencies -->
+        <!--
+            JBPM Persistence Dependencies
+        -->
+        <dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm-persistence-jpa</artifactId>
+            <version>${jbpm.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-persistence-jpa</artifactId>
+            <version>${drools.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm-test</artifactId>
+            <version>${jbpm.version}</version>
+        </dependency>
+
+        <!--
+            Hibernate Dependnecies
+        -->
+       <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.2.3.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-annotations</artifactId>
+            <version>3.5.6-Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.2.3.Final</version>
+        </dependency>
+
+        <!--
+            MySQL Dependencies
+        -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -85,5 +132,25 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
+<!--        <dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm-human-task-hornetq</artifactId>
+            <version>${jbpm.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm-human-task-mina</artifactId>
+            <version>${jbpm.version}</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.codehaus.btm</groupId>
+            <artifactId>btm</artifactId>
+            <version>2.1.2</version>
+<!--            <type>jar</type>-->
+        </dependency>
+
     </dependencies>
 </project>
