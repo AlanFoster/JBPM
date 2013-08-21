@@ -95,3 +95,4 @@ Useful Resources
 
 - [JBPM Community Training](http://salaboy.com/2011/01/24/announcing-jbpm5-community-training/)
 - [JBPM5 Developer Guide](http://www.packtpub.com/jboss-business-process-management-5-jave-developer-guide/book)
+- [Setup JBPM5.4 Final Installer to Use MySQL](https://community.jboss.org/wiki/SetUpJBPM54FinalInstallerToUseMySQL-OrHowToRunSection37OfTheUserGuide)

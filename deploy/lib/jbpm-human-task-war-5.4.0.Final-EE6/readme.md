@@ -1,0 +1,1 @@
+lib/jbpm-human-task-war-5.4.0.Final-EE6.war/WEB-INF/classes/META-INF/persistence.xml

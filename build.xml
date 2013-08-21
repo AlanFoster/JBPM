@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="deploy" default="install">
+
+    <!--
+        Ant Build properties
+    -->
+    <property name="root" location="${basedir}" />
+    <property name="jbpm.installer.path" location="${root}/jbpm-installer"/>
+    <property name="configuration.path" location="${root}/deploy"/>
+    <property name="configuration.lib" location="${configuration.path}/lib" />
+
+    <property name="gwtconsole.name" value="jbpm-gwt-console-server-5.4.0.Final-EE6" />
+    <property name="humantask.name" value="jbpm-human-task-war-5.4.0.Final-EE6" />
+
+
+    <!--
+         Copy all copyable files where threre exists a one to one mapping between directories.
+         For instance this will not copy the lib files; As we need to inject them into specific jars and not directories
+    -->
+    <target name="copy.main">
+        <copy todir="${jbpm.installer.path}">
+            <fileset dir="${configuration.path}">
+                <exclude name="lib/**"/>
+                <include name="**/*"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <!-- Copy the new persistence files into the existing jars -->
+    <target name="copy.jar.persistence.files">
+        <jar update="true"
+             destfile="${jbpm.installer.path}/lib/${gwtconsole.name}.war">
+            <zipfileset
+                    dir="${configuration.lib}/${gwtconsole.name}"
+                    includes="persistence.xml"
+                    prefix="WEB-INF/classes/META-INF">
+            </zipfileset>
+        </jar>
+
+        <jar update="true"
+             destfile="${jbpm.installer.path}/lib/${humantask.name}.war">
+            <zipfileset
+                    dir="${configuration.lib}/${humantask.name}"
+                    includes="persistence.xml"
+                    prefix="WEB-INF/classes/META-INF">
+            </zipfileset>
+        </jar>
+    </target>
+
+    <target name="copy.all" depends="copy.main, copy.jar.persistence.files"/>
+
+    <target name="install" depends="copy.all"/>
+</project>
