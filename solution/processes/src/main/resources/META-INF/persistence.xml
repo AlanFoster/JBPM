@@ -39,10 +39,6 @@
 
             <property name="hibernate.transaction.jta.platform"
                       value="org.hibernate.service.jta.platform.internal.BitronixJtaPlatform" />
-
-<!--            <property name="hibernate.transaction.manager_lookup_class"
-                      value="org.hibernate.transaction.BTMTransactionManagerLookup"/>-->
-
         </properties>
     </persistence-unit>
 </persistence>
