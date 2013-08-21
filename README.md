@@ -14,10 +14,17 @@ The business process requires for Orders to be sent in a different path dependan
 	<img src="documentation/WidgetsAndGadgets.png" alt="Business Process Overview" />
 </div>
 
+This example aims to show how to;
+
+- Create a basic Knowledge Base from BPMN file on the classpath
+- Create a knowledge base from Guvnor *TODO*
+- Create a Persisted jBPM process with MySQL and JPA2
+- Easily switch implementations using the Strategy Pattern 
+
 Work Item Handlers
 ------------------
 
-A custom Service Task requires for you to register a 'WorkItemHandler' instance with the current StatefulKnowledgeSession you have instantiated.
+A custom Service Task requires for you to register a 'WorkItemHandler' instance with the current StatefulKnowledgeSession you have instantiated from the current KnowledgeBase instance.
 
 The following custom WorkItemHandlers are registered within this example;
 
@@ -66,8 +73,8 @@ This will allow you to connect to the schema with the given connection string
 *Note* - Hibernate will automatically create the required tables on application start. This process should not be performed manually.
 
 
-Running The demo
-----------------
+Running The BRMS and Guvnor Demo
+---------------------------------
 
 ###Application Startup
 
