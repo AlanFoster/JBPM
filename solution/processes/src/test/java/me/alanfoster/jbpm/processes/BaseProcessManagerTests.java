@@ -1,5 +1,6 @@
 package me.alanfoster.jbpm.processes;
 
+import me.alanfoster.jbpm.ISessionManager;
 import me.alanfoster.jbpm.ProcessManager;
 import me.alanfoster.jbpm.model.Gadget;
 import me.alanfoster.jbpm.model.Order;
@@ -18,11 +19,10 @@ import org.junit.Test;
  */
 public abstract class BaseProcessManagerTests {
 
-    @Ignore
     @Test
     public void testWidget() throws Exception {
-        KnowledgeBase knowledgeBase = createKnowledgeBase();
-        ProcessManager processManager = new ProcessManager(knowledgeBase);
+        ISessionManager sessionManager = createSessionManager();
+        ProcessManager processManager = new ProcessManager(sessionManager);
 
         Order widgetOrder = getWidgetOrder();
         processManager.startWidgetAndGadgetsProcess(widgetOrder);
@@ -32,12 +32,10 @@ public abstract class BaseProcessManagerTests {
                 widgetOrder.isCompleted());
     }
 
-
-    @Ignore
     @Test
     public void testGadget() throws Exception {
-        KnowledgeBase knowledgeBase = createKnowledgeBase();
-        ProcessManager processManager = new ProcessManager(knowledgeBase);
+        ISessionManager sessionManager = createSessionManager();
+        ProcessManager processManager = new ProcessManager(sessionManager);
 
         Order gadgetOrder = getGadgetOrder();
         processManager.startWidgetAndGadgetsProcess(gadgetOrder);
@@ -59,8 +57,8 @@ public abstract class BaseProcessManagerTests {
     }
 
     /**
-     *
-     * @return Either a transacted or non-transacted knowledge base implementation.
+     * @return Return the ISessionManager instance specific to this testing scenario.
+     *         such as a Volatile/Persisted implementation or, a ClassPath/Guvnor loaded knowledgebase.
      */
-    public abstract KnowledgeBase createKnowledgeBase();
+    public abstract ISessionManager createSessionManager();
 }

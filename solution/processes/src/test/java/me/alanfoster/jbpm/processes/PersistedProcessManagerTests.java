@@ -1,6 +1,8 @@
 package me.alanfoster.jbpm.processes;
 
 import bitronix.tm.TransactionManagerServices;
+import me.alanfoster.jbpm.ISessionManager;
+import me.alanfoster.jbpm.PersistedSessionManager;
 import me.alanfoster.jbpm.ProcessManager;
 import me.alanfoster.jbpm.model.Gadget;
 import me.alanfoster.jbpm.model.Order;
@@ -28,58 +30,9 @@ import javax.persistence.Persistence;
  * Note, these tests assume that an application has already been deployed to Guvnor,
  * and that a MySQL database exists.
  */
-public class PersistedProcessManagerTests /*extends BaseProcessManagerTests*/ {
-
-
-
-/*    @Ignore
-    @Test
-    public void testWidget() throws Exception {
-
-    }*/
-
-
-    /**
-     * Create a new knowledge base from the BPMN files within the current classpath.
-     * This does not connect to a running Guvnor instance.
-     */
-    @Test
-    public void createKnowledgeBase() {
-        EntityManagerFactory entityManagerFactory =
-                Persistence.createEntityManagerFactory("me.alanfoster.jbpm.persistenceunit");
-
-        Environment environment = KnowledgeBaseFactory.newEnvironment();
-        environment.set(EnvironmentName.ENTITY_MANAGER_FACTORY, entityManagerFactory);
-        environment.set(EnvironmentName.TRANSACTION_MANAGER, TransactionManagerServices.getTransactionManager());
-
-        JPAProcessInstanceDbLog.setEnvironment(environment);
-
-        KnowledgeBuilder knowledgeBuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
-        knowledgeBuilder.add(ResourceFactory.newClassPathResource("WidgetsAndGadgets.bpmn"), ResourceType.BPMN2);
-
-        KnowledgeBase knowledgeBase = knowledgeBuilder.newKnowledgeBase();
-
-
-        ProcessManager processManager = new ProcessManager(knowledgeBase, environment);
-
-        Order widgetOrder = getWidgetOrder();
-        processManager.startWidgetAndGadgetsProcess(widgetOrder);
-
-        Assert.assertTrue(
-                "The widget order should be completed",
-                widgetOrder.isCompleted());
+public class PersistedProcessManagerTests extends BaseProcessManagerTests {
+    @Override
+    public ISessionManager createSessionManager() {
+        return new PersistedSessionManager();
     }
-
-
-
-
-
-    private Order getWidgetOrder() {
-        return new Order(new Widget());
-    }
-
-    private Order getGadgetOrder() {
-        return new Order(new Gadget());
-    }
-
 }
