@@ -14,10 +14,46 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!--
+            TODO Deal with this path issue
+            We should be making use of of ${basedir}, but it seems seems to point to the solution directory?...
+        -->
+        <root>${user.dir}</root>
     </properties>
 
 	<modules>
 		<module>solution</module>
 	</modules>
 
+    <profiles>
+        <profile>
+            <id>run</id>
+            <build>
+                <defaultGoal>install</defaultGoal>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.7</version>
+                        <executions>
+                            <execution>
+                                <id>run-jbpm</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <tasks>
+                                        <property name="root" value="${root}}" />
+                                        <ant antFile="${root}/build.xml" target="install"/>
+                                    </tasks>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
