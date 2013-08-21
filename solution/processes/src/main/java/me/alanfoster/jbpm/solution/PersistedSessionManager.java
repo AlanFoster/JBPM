@@ -1,4 +1,4 @@
-package me.alanfoster.jbpm;
+package me.alanfoster.jbpm.solution;
 
 import bitronix.tm.TransactionManagerServices;
 import org.drools.KnowledgeBase;
@@ -34,7 +34,7 @@ public class PersistedSessionManager implements ISessionManager {
     }
 
     public Environment newEnvironment() {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("me.alanfoster.jbpm.persistenceunit");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("me.alanfoster.jbpm.solution.persistenceunit");
 
         Environment environment = KnowledgeBaseFactory.newEnvironment();
         environment.set(EnvironmentName.ENTITY_MANAGER_FACTORY, entityManagerFactory);

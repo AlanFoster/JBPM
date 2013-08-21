@@ -1,6 +1,6 @@
-package me.alanfoster.jbpm.handlers;
+package me.alanfoster.jbpm.solution.handlers;
 
-import me.alanfoster.jbpm.model.Order;
+import me.alanfoster.jbpm.solution.model.Order;
 import org.drools.runtime.process.WorkItem;
 import org.drools.runtime.process.WorkItemHandler;
 import org.drools.runtime.process.WorkItemManager;

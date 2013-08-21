@@ -1,4 +1,4 @@
-package me.alanfoster.jbpm;
+package me.alanfoster.jbpm.solution;
 
 import org.drools.KnowledgeBase;
 import org.drools.builder.KnowledgeBuilder;

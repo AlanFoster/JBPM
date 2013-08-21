@@ -8,7 +8,7 @@
 
     <!-- Default Bitronix registers itself under JNDI java:comp/UserTransaction -->
 
-    <persistence-unit name="me.alanfoster.jbpm.persistenceunit" transaction-type="JTA">
+    <persistence-unit name="me.alanfoster.jbpm.solution.persistenceunit" transaction-type="JTA">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <!--<jta-data-source>java:foobar</jta-data-source>-->
 

@@ -1,8 +1,8 @@
-package me.alanfoster.jbpm;
+package me.alanfoster.jbpm.solution;
 
-import me.alanfoster.jbpm.model.Order;
-import me.alanfoster.jbpm.handlers.GadgetWorkItemHandler;
-import me.alanfoster.jbpm.handlers.WidgetWorkItemHandler;
+import me.alanfoster.jbpm.solution.model.Order;
+import me.alanfoster.jbpm.solution.handlers.GadgetWorkItemHandler;
+import me.alanfoster.jbpm.solution.handlers.WidgetWorkItemHandler;
 import org.drools.KnowledgeBase;
 import org.drools.KnowledgeBaseFactory;
 import org.drools.logger.KnowledgeRuntimeLoggerFactory;

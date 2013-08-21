@@ -1,10 +1,10 @@
-package me.alanfoster.jbpm.processes;
+package me.alanfoster.jbpm.solution.processes;
 
-import me.alanfoster.jbpm.ISessionManager;
-import me.alanfoster.jbpm.ProcessManager;
-import me.alanfoster.jbpm.model.Gadget;
-import me.alanfoster.jbpm.model.Order;
-import me.alanfoster.jbpm.model.Widget;
+import me.alanfoster.jbpm.solution.ISessionManager;
+import me.alanfoster.jbpm.solution.ProcessManager;
+import me.alanfoster.jbpm.solution.model.Gadget;
+import me.alanfoster.jbpm.solution.model.Order;
+import me.alanfoster.jbpm.solution.model.Widget;
 import org.drools.KnowledgeBase;
 import org.junit.Assert;
 import org.junit.Ignore;

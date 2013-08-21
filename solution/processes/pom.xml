@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>me.alanfoster</groupId>
-		<artifactId>jbpm</artifactId>
+		<groupId>me.alanfoster.jbpm.solution</groupId>
+		<artifactId>solution</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-    <groupId>me.alanfoster.jbpm</groupId>
+    <groupId>me.alanfoster.jbpm.solution</groupId>
     <artifactId>processes</artifactId>
     <version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
@@ -36,9 +36,9 @@
             Datamodel Dependencies
         -->
         <dependency>
-            <groupId>me.alanfoster.jbpm</groupId>
+            <groupId>me.alanfoster.jbpm.solution</groupId>
             <artifactId>model</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <!--
@@ -133,23 +133,10 @@
             <scope>test</scope>
         </dependency>
 
-<!--        <dependency>
-            <groupId>org.jbpm</groupId>
-            <artifactId>jbpm-human-task-hornetq</artifactId>
-            <version>${jbpm.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jbpm</groupId>
-            <artifactId>jbpm-human-task-mina</artifactId>
-            <version>${jbpm.version}</version>
-        </dependency>-->
-
         <dependency>
             <groupId>org.codehaus.btm</groupId>
             <artifactId>btm</artifactId>
             <version>2.1.2</version>
-<!--            <type>jar</type>-->
         </dependency>
 
     </dependencies>
