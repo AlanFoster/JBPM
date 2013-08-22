@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>me.alanfoster.jbpm.solution</groupId>
+		<groupId>me.alanfoster.jbpm</groupId>
 		<artifactId>solution</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>

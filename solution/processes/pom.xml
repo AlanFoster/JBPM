@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>me.alanfoster.jbpm.solution</groupId>
+		<groupId>me.alanfoster.jbpm</groupId>
 		<artifactId>solution</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
@@ -47,7 +47,7 @@
         <dependency>
             <groupId>org.jbpm</groupId>
             <artifactId>jbpm-flow</artifactId>
-            <version>${jbpm.version}</version>
+            <version>5.4.0.Final</version>
         </dependency>
         <dependency>
             <groupId>org.jbpm</groupId>

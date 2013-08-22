@@ -12,7 +12,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	
-    <groupId>me.alanfoster.jbpm.solution</groupId>
+    <groupId>me.alanfoster.jbpm</groupId>
     <artifactId>solution</artifactId>
     <packaging>pom</packaging>
 
@@ -39,6 +39,7 @@
                     <target>${java.configuration.version}</target>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 
