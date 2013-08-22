@@ -98,7 +98,7 @@ TODO ...
 </div>
 
 
-###### Diagram View
+###### Process Instance Activity Diagram
 <div style="align:center">
 	<img src="documentation/ProcessInstanceActivity.png" alt="Process Instance Activity" />
 </div>
