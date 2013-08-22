@@ -90,6 +90,19 @@ If you are having issues with the installer, be sure to look at the readme under
 
 TODO ...
 
+#####JBPM Console Running
+
+###### Process Overview
+<div style="align:center">
+	<img src="documentation/JBPMConsoleOverview.png" alt="JBPM Console Overview" />
+</div>
+
+
+###### Diagram View
+<div style="align:center">
+	<img src="documentation/ProcessInstanceActivity.png" alt="Process Instance Activity" />
+</div>
+
 Useful Resources
 =========
 
