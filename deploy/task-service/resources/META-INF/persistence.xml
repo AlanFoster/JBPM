@@ -34,7 +34,7 @@
         <class>org.jbpm.task.User</class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
-            <property name="hibernate.connection.driver_class" value="org.h2.Driver"/>
+            <property name="hibernate.connection.driver_class" value="org.jdbc.Driver"/>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/task" />
             <property name="hibernate.connection.username" value="task"/>
             <property name="hibernate.connection.password" value="task"/>

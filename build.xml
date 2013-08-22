@@ -6,12 +6,13 @@
     -->
     <property name="root" location="${basedir}" />
     <property name="jbpm.installer.path" location="${root}/jbpm-installer"/>
+    <property name="jbpm.installer.antfile.path" location="${jbpm.installer.path}/build.xml"/>
+
     <property name="configuration.path" location="${root}/deploy"/>
     <property name="configuration.lib" location="${configuration.path}/lib" />
 
     <property name="gwtconsole.name" value="jbpm-gwt-console-server-5.4.0.Final-EE6" />
     <property name="humantask.name" value="jbpm-human-task-war-5.4.0.Final-EE6" />
-
 
     <!--
          Copy all copyable files where threre exists a one to one mapping between directories.
@@ -26,17 +27,39 @@
         </copy>
     </target>
 
-    <!-- Copy the new persistence files into the existing jars -->
-    <target name="copy.jar.persistence.files">
+    <!--
+        Copies all required files into the gwtconsole jar file within the jbpm-install lib
+    -->
+    <target name="copy.to.jar.gwtconsole">
+        <property name="gwtconsole.war" location="${jbpm.installer.path}/lib/${gwtconsole.name}.war" />
+        <property name="gwtconsole.config.path" location="${configuration.lib}/${gwtconsole.name}" />
+
         <jar update="true"
-             destfile="${jbpm.installer.path}/lib/${gwtconsole.name}.war">
+             destfile="${gwtconsole.war}">
+            <!-- Copy our persistence file -->
             <zipfileset
-                    dir="${configuration.lib}/${gwtconsole.name}"
+                    dir="${gwtconsole.config.path}"
                     includes="persistence.xml"
                     prefix="WEB-INF/classes/META-INF">
             </zipfileset>
+            <!--
+                Copy our datamodel into the gwtserver classpath
+                otherwise we get would get classpath exceptions from the jbpm-console
+            |-->
+            <zipfileset
+                    dir="${gwtconsole.config.path}"
+                    includes="**/*.jar"
+                    prefix="WEB-INF/lib" />
+
         </jar>
 
+    </target>
+
+    <!--
+        Copies all required files into the humantask jar file within the jbpm-install lib
+    -->
+    <target name="copy.to.jar.humantask">
+        <!-- Copy our new persistence file -->
         <jar update="true"
              destfile="${jbpm.installer.path}/lib/${humantask.name}.war">
             <zipfileset
@@ -47,7 +70,41 @@
         </jar>
     </target>
 
-    <target name="copy.all" depends="copy.main, copy.jar.persistence.files"/>
+    <!-- Copy the new persistence files into the existing jars -->
+    <target name="copy.jar.persistence.files" depends="copy.to.jar.gwtconsole, copy.to.jar.humantask"/>
 
-    <target name="install" depends="copy.all"/>
+    <target name="copy.all.config" depends="copy.main, copy.jar.persistence.files"/>
+
+    <target name="start.jbpm">
+        <ant
+                dir="${jbpm.installer.path}"
+                antFile="${jbpm.installer.antfile.path}"
+                target="start.jboss" />
+    </target>
+
+    <target name="stop.jbpm">
+        <ant
+                dir="${jbpm.installer.path}"
+                antFile="${jbpm.installer.antfile.path}"
+                target="stop.jboss" />
+    </target>
+
+    <target name="install.jbpm">
+        <ant
+                dir="${jbpm.installer.path}"
+                antFile="${jbpm.installer.antfile.path}"
+                target="install.demo.noeclipse" />
+    </target>
+
+    <target name="clean.jbpm">
+        <ant
+                dir="${jbpm.installer.path}"
+                antFile="${jbpm.installer.antfile.path}"
+                target="clean.demo.noeclipse" />
+    </target>
+
+    <target name="install" depends="install.jbpm, copy.all.config" />
+    <target name="clean" depends="clean.jbpm" />
+    <target name="start" depends="start.jbpm"/>
+    <target name="stop" depends="stop.jbpm" />
 </project>
