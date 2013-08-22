@@ -22,11 +22,11 @@
         <root>${user.dir}</root>
     </properties>
 
-	<modules>
-		<module>solution</module>
-	</modules>
+    <modules>
+        <module>solution</module>
+    </modules>
 
-    <profiles>
+    <!--<profiles>
         <profile>
             <id>run</id>
             <build>
@@ -45,8 +45,8 @@
                                 </goals>
                                 <configuration>
                                     <tasks>
-                                        <property name="root" value="${root}}" />
-                                        <ant antFile="${root}/build.xml" target="install"/>
+                                        <property name="root" value="${root}}"/>
+                                        <ant antFile="${root}/build.xml" target="run"/>
                                     </tasks>
                                 </configuration>
                             </execution>
@@ -55,5 +55,5 @@
                 </plugins>
             </build>
         </profile>
-    </profiles>
+    </profiles>-->
 </project>
